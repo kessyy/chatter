@@ -1,0 +1,63 @@
+<div class="row messages-card">
+  <div class="col-md-12">
+    <div class="mt-5">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="current-user">
+            <div class="row">
+              <div class="col-md-2">
+                <img class="avatar" src="{{user.avatar}}" alt="current_user">
+              </div>
+              <div class="col-md-4">
+                <p>{{user.alias_name + ' (you)'}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-10">
+                <p>This space is just for you. Use it to have a conversation with yourself.</p>
+              </div>
+            </div>
+          </div>
+          <ul
+            class="conversation-list disable-scrollbars"
+            [style.maxHeight.px]="maxHeight">
+            <li
+              class="clearfix"
+              *ngFor="let message of messages"
+              [ngClass]="{'is-current-user': message.user === user}">
+              <div class="chat-avatar">
+                <i>{{ message.created_at }}</i>
+              </div>
+              <div class="conversation-text">
+                <div class="chat-text">
+                  <p>{{ message.message_body }}</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 message-input">
+      <div class="row">
+        <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+          <div class="col-md-12 form-group">
+            <input 
+              class="form-control" 
+              placeholder="Enter message" 
+              [(ngModel)]="message"
+              formControlName="message_body"
+            >
+            <app-button
+              [buttonText]="'Send'"
+              [buttonClassString]="'main-class chat-send'"
+              [buttonType]="'submit'"
+            > 
+            </app-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
