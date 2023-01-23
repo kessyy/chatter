@@ -1,0 +1,81 @@
+.login-area {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+
+  app-card {
+    height: 100vh;
+  }
+
+  .side-card {
+    background-color: #7476F5;
+    height: 100vh;
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+    }
+
+    p {
+      text-align: center;
+      color: #ffffff;
+      font-size: 20px;
+
+      a {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .form-area {
+    img {
+      text-align: center;
+      margin-left: 50%;
+
+      @media only screen and (max-width: 768px) {
+        margin-left: 35%;
+      }
+    }
+
+    form {
+      width: 70%;
+      margin-left: 10%;
+
+      .form-group {
+        display: inline-block;
+        width: 30%;
+
+        label {
+          font-size: 18px;
+        }
+
+        &:first-of-type {
+          margin-right: 10px;
+        }
+
+        .is-invalid {
+          margin-bottom: auto;
+        }
+      }
+
+      .login-sign-in {
+        .mobile-text {
+          display: none;
+          font-size: 15px;
+          color: #7476F5;
+          text-decoration: underline;
+        }
+      }
+
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      order: -1;
+    }
+  }
+}

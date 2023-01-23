@@ -1,0 +1,79 @@
+mat-toolbar {
+  background-color: #ffffff;
+  height: 40px;
+  color: #000000;
+  border-bottom: 2px solid #7476F5;
+
+  form {
+    display: none;
+    width: 65%;
+    margin-left: 5px;
+    top: 5px;
+    position: absolute;
+
+    .form-group {
+      display: inline-block;
+      width: 100%;
+
+      .form-control {
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid #7476F5 !important;
+      }
+
+      ::placeholder {
+        color: #95969c;
+        font-size: 20px;
+        margin-left: 15px;
+      }
+
+      input {
+        font-size: 20px;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      display: block;
+      margin-left: -6%;
+    }
+  }
+
+  .header-title {
+    font-size: 20px;
+
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .icons-right {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    margin-right: 20px;
+
+    .settings {
+      &:hover::after {
+        position: absolute;
+        font-size: 21px;
+        z-index: 10000;
+        top: 19px;
+        right: 14px;
+      }
+    }
+
+    mat-icon {
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+app-side-card,
+app-side-card-popup {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  top: 0;
+}

@@ -1,0 +1,161 @@
+.modal-overlay {
+  &.is-open {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    cursor: pointer;
+  }
+}
+
+.modal {
+  &.is-open {
+    display: block;
+    opacity: 1;
+    top: 20%;
+    position: fixed;
+    padding: 35px 0px 20px;
+  }
+
+  .modal-header {
+    .close {
+      border: 1px solid #e3e3e3;
+    }
+  }
+
+  .modal-footer {
+    border: 0;
+
+    button {
+      background-color: #7476F5;
+      border: 0;
+    }
+  }
+}
+
+.create-photo-left {
+  .d-table-cell {
+    position: relative;
+    height: 100%;
+
+    .upload-text {
+      color: #000;
+      margin: 20px;
+    }
+
+    .form-control-file {
+      font-size: 12px;
+      bottom: 0;
+    }
+
+    .image-container {
+      margin-left: 0 !important;
+      // position: absolute;
+      // top: 50%;
+      // left: 50%;
+      // transform: translate(-50%, -50%);
+
+      i {
+        color: rgb(48, 48, 48);
+        font-size: 30px;
+        float: right;
+        cursor: pointer;
+      }
+
+      img {
+        width: 200px;
+        max-width: none;
+      }
+    }
+  }
+}
+
+.login-area {
+  display: flex;
+  flex-direction: row;
+
+  app-card {
+    height: 100%;
+  }
+
+  .side-card {
+    background-color: #7476F5;
+    height: 100%;
+    width: 100%;
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+    }
+
+    p {
+      text-align: center;
+      color: #ffffff;
+      font-size: 20px;
+
+      a {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .form-area {
+    img {
+      text-align: center;
+      // margin-left: 50%;
+      margin-top: -7%;
+    }
+
+    form {
+      .terms {
+        padding: 0;
+        margin-bottom: 15px;
+
+        label {
+          margin-top: -25px;
+          margin-left: 20px;
+        }
+
+        a {
+          color: #7476F5;
+        }
+      }
+
+      .form-group {
+        display: inline-block;
+        width: 30%;
+
+        label {
+          font-size: 18px;
+        }
+
+        &:first-of-type {
+          margin-right: 10px;
+        }
+
+        .is-invalid {
+          margin-bottom: auto;
+        }
+      }
+
+      .login-sign-in {
+        .mobile-text {
+          display: none;
+          font-size: 15px;
+          color: #7476F5;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      order: -1;
+    }
+  }
+}

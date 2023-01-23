@@ -1,0 +1,302 @@
+<div class="modal-overlay"></div>
+<div class="login-area">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="row side-card">
+        <div class="col-md-12">
+          <h1 class="p-5">CHAT APP</h1>
+          <span></span>
+          <p class="p-2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Donec faucibus ipsum non mollis sollicitudin. 
+            Maecenas elementum eros felis, at varius ante blandit imperdiet. 
+            In in gravida enim.
+          </p>
+          <p>
+            <a class="p-4" routerLink="/authenticate/login">Already have an account?</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9 p-5 form-area">
+      <form class="p-3" [formGroup]="createAccountForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="">
+            
+            <div class="col-lg-12">
+              <div class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Crop Image</h5>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                        (click)="onCloseHandled()"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <image-cropper
+                        [imageChangedEvent]="imageChangedEvent"
+                        [imageURL]="imageURL"
+                        [maintainAspectRatio]="true"
+                        [containWithinAspectRatio]="containWithinAspectRatio"
+                        [aspectRatio]="aspectRatio"
+                        [resizeToWidth]="400"
+                        [cropperMinWidth]="400"
+                        [onlyScaleDown]="true"
+                        [roundCropper]="false"
+                        [canvasRotation]="canvasRotation"
+                        [transform]="transform"
+                        [alignImage]="'center'"
+                        [style.display]="showCropper ? null : 'none'"
+                        format="png, jpeg"
+                        (imageCropped)="imageCropped($event)"
+                        (imageLoaded)="imageLoaded()"
+                        (cropperReady)="cropperReady($event)"
+                        (loadImageFailed)="loadImageFailed()"
+                      ></image-cropper>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="cropImage()"
+                      >
+                        Crop
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="create-photo-item">
+                  <div class="create-photo-left">
+                    <div class="d-table">
+                      <div class="d-table-cell">
+                        <div class="form-group">
+                          <div *ngIf="!croppedImage" class="upload-text">Upload your display Photo *                          
+                          </div>
+                          <i *ngIf="!croppedImage" class="icofont-photobucket"></i>
+                          <input
+                            *ngIf="!croppedImage"
+                            class="form-control-file"
+                            type="file"
+                            accept="image/png, image/jpeg"
+                            (change)="onImageChange($event)"
+                          >
+                        </div>
+                        <div *ngIf="croppedImage" class="image-container">
+                          <i class="icofont-close" (click)="onRemoveImge()"></i>
+                          <img id="image" [src]="croppedImage" alt="profile image"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngIf="submitted && !croppedImage" class="is-invalid">
+                      Photo required
+                    </div>
+                    <div *ngIf="!isAllowedImage" class="is-invalid">
+                      width & height max 400px and not greater than 2 MB
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>First Name: *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter First Name"
+                    formControlName="first_name"
+                  >
+                  <div *ngIf="submitted && f.first_name.errors" class="is-invalid">
+                    <div *ngIf="f.first_name.errors.required">First name required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Last Name: *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Last Name"
+                    formControlName="last_name"
+                  >
+                  <div *ngIf="submitted && f.last_name.errors" class="is-invalid">
+                    <div *ngIf="f.last_name.errors.required">last name required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Alias Name: *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Alias Name"
+                    formControlName="alias_name"
+                  >
+                  <div *ngIf="submitted && f.alias_name.errors" class="is-invalid">
+                    <div *ngIf="f.alias_name.errors.required">Alias name required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Email: *</label>
+                  <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Email"
+                  formControlName="email"
+                  >
+                  <div *ngIf="submitted && f.email.errors" class="is-invalid">
+                    <div *ngIf="f.email.errors.required">Email required</div>
+                    <div *ngIf="f.email.errors.email ||
+                          f.email.errors.pattern"> Email must be a valid email address
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Password: *</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Enter Password"
+                    formControlName="password"
+                  >
+                  <div *ngIf="submitted && f.password.errors" class="is-invalid">
+                    <div *ngIf="f.password.errors.required">Password required</div>
+                    <div *ngIf="f.password.errors.minlength">Must be at least 6 characters</div>
+                  </div>
+                  <app-password-strength
+                    [barLabel]="'Password Strength'"
+                    [passwordToCheck]="f.password.value"
+                    (passwordStrong)="passwordStrong($event)"
+                  ></app-password-strength>
+                  <div class="is-invalid" *ngIf="submitted && !isPasswordStrong">Password not strong</div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Confirm Password: *</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Confirm Password"
+                    formControlName="confirmPassword"
+                  >
+                  <div *ngIf="submitted && (f.confirmPassword.invalid || createAccountForm.hasError('notSame'))"
+                       class="is-invalid">
+                    Passwords should match
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Your Phone: *</label>
+                  <ngx-intl-tel-input
+                    [preferredCountries]="preferredCountries"
+                    [enableAutoCountrySelect]="true"
+                    [enablePlaceholder]="true"
+                    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                    [selectedCountryISO]="CountryISO.Uganda"
+                    [phoneValidation]="true"
+                    [customPlaceholder]="772123456"
+                    [numberFormat]="772123456"
+                    name="phone"
+                    formControlName="telephone">
+                  </ngx-intl-tel-input>
+                  <div *ngIf="submitted && f.telephone.errors" class="is-invalid">
+                    <div *ngIf="f.telephone.errors.required">Telephone required</div>
+                    <div *ngIf="f.telephone.errors?.validatePhoneNumber">Invalid Number</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12">
+              <div class=" form-group">
+                <label>About me: *</label>
+                <textarea
+                  id="your_bio"
+                  rows="8"
+                  class="form-control"
+                  placeholder="Tell us about yourself"
+                  formControlName="bio"
+                ></textarea>
+                <div *ngIf="submitted && f.bio.errors" class="is-invalid">
+                  <div *ngIf="f.bio.errors.required">Bio required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-12 terms">
+              <div class="form-group">
+                <input
+                  type="checkbox"
+                  name="terms"
+                  id="terms"
+                  formControlName="terms"
+                >
+                <label class="checkbox-label" for="terms">
+                  I have read and accept the
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://meshincentre.com/terms-and-conditions"
+                  >
+                    Terms and Conditions
+                  </a>
+                  of Mesh Innovation Centre *
+                </label>
+                <div
+                  class="is-invalid"
+                  *ngIf="submitted && !f.terms.value"
+                >
+                  Terms required
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+        <div class="login-sign-in">
+          <a class="p-2 mobile-text" routerLink="/authenticate/forgot-password">Forgot Password?</a>
+          <a class="p-4 mobile-text" routerLink="/authenticate/login">Don't have an account?</a>
+          <div class="text-center">
+            <button type="submit" class="btn login-form-btn">Sign Up</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+

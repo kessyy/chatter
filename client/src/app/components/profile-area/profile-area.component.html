@@ -1,0 +1,26 @@
+<a href="#" (click)="show('popup1')"></a>
+<div 
+  class="row {{ componentClassString }}" 
+  id="popup1" 
+  *ngIf="isShowProfileComponent"
+  >
+  <div id="profile-area" class="col-lg-12">
+    <div class="arrows">
+      <i class="icofont-close-line-circled" (click)="closeProfileArea()"></i>
+    </div>
+    <img class="display-picture-avatar" src="../../../assets/images/avatar.png">
+    <div class="p-5">
+      <p class="profile-details"> {{ user[0].firstName + ' ' + user[0].lastName }} </p>
+      <p class="profile-details"> {{ user[0].displayName }} </p>
+      <p class="profile-details"> {{ user[0].bio }} </p>
+    </div>
+    <app-button
+      [buttonText]="'Edit Profile'"
+      [buttonClassString]="'main-class'"
+      [buttonType]="'submit'"
+      (click)="openEditUser()"
+    > 
+    </app-button>
+    <app-edit-user #userform></app-edit-user>   
+  </div>
+</div>

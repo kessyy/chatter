@@ -1,0 +1,21 @@
+<a href="#" (click)="show('popup1')"></a>
+<div id="{{ PopUpId }}" class="row persons-side-card  {{subroomsPopUpClass}}" *ngIf="showMembersComponent">
+  <div class="col-lg-12">
+    <i class="icofont-close-line-circled" *ngIf="showMembersComponentCloseButton"  (click)="hide()" aria-hidden="true"></i>
+    
+    <span></span>
+
+    <div class="members p-5" *ngIf="isPrivateRoom">
+      <h4>Members</h4>
+      <ul *ngFor="let user of users">
+        <li class="member-name" (click)="joinRoom(user)">{{user.first_name + ' ' + user.last_name }}</li>
+      </ul>
+    </div>
+    <div class="rooms" *ngIf="!isPrivateRoom">
+      <h4>Rooms</h4>
+      <img class="rooms-avatar" src="../../../assets/images/avatar.png">
+      <img class="rooms-avatar" src="../../../assets/images/avatar.png">
+      <img class="rooms-avatar" src="../../../assets/images/avatar.png">
+    </div>
+  </div>
+</div>

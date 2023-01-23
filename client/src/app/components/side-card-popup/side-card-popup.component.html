@@ -1,0 +1,21 @@
+<a href="#" (click)="show('popup1')"></a>
+<div id="{{ PopUpId }}" class="row rooms-side-card {{roomsPopUpClass}}" *ngIf="showAvatarsComponent">
+  <div class="col-md-12">
+    <i class="icofont-close-line-circled" *ngIf="showAvatarsComponentCloseButton" (click)="hide()" aria-hidden="true"></i>
+    <h5 class="p-1">Rooms</h5>
+    <span></span>
+    <div class="rooms" *ngIf="isRooms">
+      <img class="rooms-avatar" src="../../../assets/images/avatar.png">
+      <img class="rooms-avatar" src="../../../assets/images/avatar.png">
+      <img class="rooms-avatar" src="../../../assets/images/avatar.png">
+    </div>
+    <div class="members p-5" *ngIf="!isRooms">
+      <h4>Members</h4>
+      <ul>
+        <li class="member-name" (click)="joinRoom()">Jane Foster</li>
+        <li class="member-name" (click)="joinRoom()">Thor Odinson</li>
+        <li class="member-name" (click)="joinRoom()">Loki Odinson</li>
+      </ul>
+    </div>
+  </div>
+</div>

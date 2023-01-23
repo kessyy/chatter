@@ -1,0 +1,21 @@
+<!-- Topbar Start -->
+<mat-toolbar>
+  <span class="header-title" *ngIf="isMembers">{{user.first_name + ' ' + user.last_name}}</span>
+  <span class="header-title" *ngIf="!isMembers">Javascript</span>
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+    <div class="col-md-12 search-form-area form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search"
+        formControlName="searchWord"
+      >
+    </div>
+  </form>
+  <span class="icons-right">
+    <button mat-icon-button class="settings">
+      <mat-icon (click)="showRooms()" *ngIf="!isMembers">Members</mat-icon>
+      <mat-icon (click)="showRooms()" *ngIf="isMembers">Rooms</mat-icon>
+    </button>
+  </span>
+</mat-toolbar>

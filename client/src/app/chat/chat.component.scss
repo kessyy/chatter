@@ -1,0 +1,127 @@
+$primary: #5369f8;
+$border-radius: .3rem;
+$font-weight-bold: 700;
+$gray-300: #e2e7f1;
+$gray-700: #4B4B5A;
+
+.disable-scrollbars {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+}
+
+.col-md-2 {
+  margin-top: 15px !important;
+}
+
+.conversation-list {
+  list-style: none;
+  height: 332px;
+  padding: 0 7px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+
+  li {
+    margin-bottom: 24px;
+  }
+
+  .chat-avatar {
+    float: left;
+    text-align: center;
+    width: 34px;
+
+    img {
+      border-radius: 100%;
+      width: 100%;
+    }
+
+    i {
+      font-size: 12px;
+      font-style: normal;
+    }
+  }
+
+  .chat-text {
+    background: lighten($primary, 32%);
+    color: $primary;
+    border-radius: $border-radius;
+    display: inline-block;
+    padding: 4px 12px;
+    position: relative;
+    min-width: 160px;
+
+    i {
+      display: block;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: $font-weight-bold;
+      position: relative;
+    }
+
+    p {
+      margin: 0;
+      padding-top: 3px;
+    }
+
+    &:after {
+      right: 98%;
+      top: 0;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-top-color: lighten($primary, 32%);
+      border-width: 6px;
+      margin-left: -1px;
+      border-right-color: lighten($primary, 32%);
+    }
+  }
+
+  .conversation-text {
+    float: left;
+    font-size: 12px;
+    margin-left: 12px;
+    width: 70%;
+  }
+
+  .is-current-user {
+    .chat-avatar {
+      float: right !important;
+    }
+
+    .conversation-text {
+      float: right !important;
+      margin-right: 12px;
+      text-align: right;
+      width: 70% !important;
+    }
+
+    .chat-text {
+      background-color: $gray-300;
+      color: $gray-700;
+
+      &:after {
+        border-color: transparent;
+        border-left-color: $gray-300;
+        border-top-color: $gray-300;
+        left: 99% !important;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 991px) {
+  .col-md-5 {
+    flex: 50%;
+    max-width: 50%;
+  }
+  .col-md-2 {
+    flex:100%;
+    max-width: 100%;
+  }
+}

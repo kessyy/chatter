@@ -1,0 +1,86 @@
+mat-toolbar {
+  background: #7476F5 !important;
+  border-bottom: 1px solid #fff !important;
+  color: #fff;
+
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #7476F5;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+
+    a {
+      padding: 0px 8px 0px 0px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      display: block;
+      transition: 0.3s;
+
+      :hover {
+        color: #f1f1f1;
+        font-size: 18px;
+      }
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 8px;
+      right: 2px;
+      font-size: 36px;
+    }
+
+    li {
+      list-style: none;
+      font-size: 14px;
+
+      // & .sub-list {
+      //   display: none;
+
+      //   & .active li {
+      //     display: block;
+      //   }
+      // }
+
+      // .sub-list.active li {
+      //   display: block;
+      // }
+
+      &.main-list {
+        font-size: 15px;
+        font-weight: 400;
+      }
+
+      & .personal {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .header-title {
+    font-size: 21px;
+    margin-left: 25%;
+  }
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+
+    a {
+      font-size: 18px;
+    }
+  }
+}

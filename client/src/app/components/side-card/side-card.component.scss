@@ -1,0 +1,138 @@
+#popup1 {
+  -webkit-box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+}
+
+.persons-side-card {
+  width: 100%;
+  background-color: #7476F5;
+  height: 100vh;
+  bottom: 0;
+  margin: 0;
+  text-align: left;
+
+  h4 {
+    text-align: left;
+    color: #ffffff;
+    font-size: 20px;
+  }
+
+  .members {
+    ul {
+      padding: 0;
+
+      li {
+        &.member-name {
+          font-size: 18px;
+          color: #ffffff;
+          list-style: none;
+
+          &:hover {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: none
+  }
+}
+
+.subroomsPopUpClass {
+  background-color: #ffffff;
+  height: 50vh;
+  width: 80vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin-right: 0;
+  margin-left: 0;
+
+  .icofont-close-line-circled {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 600;
+    float: right;
+  }
+
+  h4 {
+    text-align: center;
+    color: #000000;
+    font-size: 20px;
+  }
+
+  .members {
+    ul {
+      li {
+        &.member-name {
+          display: flex;
+          align-items: center;
+          font-size: 18px;
+          color: #000000;
+          font-weight: 500;
+
+          &:hover {
+            font-weight: 800;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.rooms-side-card {
+  background-color: #7476F5;
+  height: 100vh;
+  bottom: 0;
+
+  .icofont-close-line-circled {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 600;
+    float: right;
+  }
+
+  h5 {
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .rooms {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .rooms-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 100px;
+      margin-top: 30px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: none
+  }
+}
+
+.roomsPopUpClass {
+  background-color: #ffffff;
+  height: 50vh;
+  width: 80vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin-right: 0;
+  margin-left: 0;
+
+  h5 {
+    text-align: center;
+    color: #000000;
+  }
+}

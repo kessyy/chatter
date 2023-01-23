@@ -1,0 +1,65 @@
+<div class="row messages-card">
+  <div class="col-md-12">
+    <!-- <div class="mt-5 search-area">
+      <div class="row">
+        <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+          <div class="col-md-12 search-form-area form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search"
+              formControlName="searchWord"
+            >
+          </div>
+        </form>
+      </div> 
+    </div> -->
+
+    <div class="mt-5">
+      <div class="row">
+        <div class="col-md-12">
+          <ul
+            class="conversation-list disable-scrollbars"
+            [style.maxHeight.px]="maxHeight">
+            <li
+              class="clearfix"
+              *ngFor="let message of messages"
+              [ngClass]="{'is-current-user': message.user === user}">
+              <div class="chat-avatar">
+                <img class="avatar" src="{{message.image}}" alt="user">
+                <i>{{ message.created_at }}</i>
+              </div>
+              <div class="conversation-text">
+                <div class="chat-text">
+                  <!-- <i>{{ message.user[0].displayName }}</i> -->
+                  <p>{{ message.message_body }}</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 message-input">
+      <div class="row">
+        <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+          <div class="col-md-12 form-group">
+            <input 
+              class="form-control" 
+              placeholder="Enter message" 
+              [(ngModel)]="message"
+              formControlName="message_body"
+            >
+            <app-button
+              [buttonText]="'Send'"
+              [buttonClassString]="'main-class chat-send'"
+              [buttonType]="'submit'"
+            > 
+            </app-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

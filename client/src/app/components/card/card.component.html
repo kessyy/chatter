@@ -1,0 +1,11 @@
+<div class="card {{cardTypeClass}}">
+  <div *ngIf="showHeader" class="card-header">
+    <ng-content select="[header]"></ng-content>
+  </div>
+  <div class="card-body {{bodyClass}}">
+    <ng-content select="[body]"></ng-content>
+  </div>
+  <div *ngIf="showFooter" class="card-footer ">
+    <ng-content select="[footer]"></ng-content>
+  </div>
+</div>

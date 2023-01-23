@@ -1,0 +1,105 @@
+.font-size-12 {
+  font-size: 12px;
+}
+
+.main-class {
+  background-color: #7476F5;
+  border-color: #7476F5;
+  padding: var(--button-padding, 0.5rem 0.75rem);
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 300;
+
+  &:hover {
+    background-color: #ffffff;
+    border-color: #7476F5;
+    color: #7476F5;
+  }
+}
+
+.chat-send {
+  background-color: #7476F5;
+  border-color: #7476F5;
+  padding: var(--button-padding, 0.5rem 0.75rem);
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 300;
+  width: 65px;
+  height: 50px;
+
+  &:hover {
+    background-color: #ffffff;
+    border-color: #7476F5;
+    color: #7476F5;
+  }
+}
+
+.close-btn {
+  margin-left: 10px;
+  background-color: #d12208;
+  border-color: #d12208;
+  padding: var(--button-padding, 0.5rem 0.75rem);
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 300;
+
+  &:hover {
+    color: #d12208 !important;
+    background-color: #ffffff;
+    border: 1px solid #d12208 !important;
+  }
+}
+
+#popup1 {
+  -webkit-box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+}
+
+.rooms-side-card {
+  background-color: #7476F5;
+  height: 100vh;
+  bottom: 0;
+
+  .icofont-close-line-circled {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 600;
+    float: right;
+  }
+
+  h5 {
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .rooms {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .rooms-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 100px;
+      margin-top: 30px;
+    }
+  }
+}
+
+.roomsPopUpClass {
+  background-color: #ffffff;
+  height: 50vh;
+  width: 80vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin-right: 0;
+  margin-left: 0;
+
+  h5 {
+    text-align: center;
+    color: #000000;
+  }
+}

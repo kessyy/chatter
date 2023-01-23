@@ -1,0 +1,49 @@
+<!-- Topbar Start -->
+<mat-toolbar>
+  <div id="mySidenav" class="sidenav">
+    <a 
+      href="javascript:void(0)" 
+      class="closebtn" 
+      (click)="closeNav()"
+    >&times;
+    </a>
+    <ul>
+      <li class="main-list">
+        <a><i class="fa fa-tags" aria-hidden="true"></i>
+          Javascript</a>
+        <ul>
+          <li class="sub-list" (click)="joinRoom()"><i class="fa fa-tag" aria-hidden="true"></i> Angular</li>
+          <li class="sub-list" (click)="joinRoom()"><i class="fa fa-tag" aria-hidden="true"></i> React</li>
+          <li class="sub-list" (click)="joinRoom()"><i class="fa fa-tag" aria-hidden="true"></i> Vue</li>
+        </ul>
+      </li>
+      <li class="main-list">
+        <a href="#"><i class="fa fa-tags" aria-hidden="true"></i>
+          PHP</a>
+        <ul>
+          <li class="sub-list" (click)="joinRoom()"><i class="fa fa-tag" aria-hidden="true"></i> Laravel</li>
+          <li class="sub-list" (click)="joinRoom()"><i class="fa fa-tag" aria-hidden="true"></i> CodeIgniter</li>
+          <li class="sub-list" (click)="joinRoom()"><i class="fa fa-tag" aria-hidden="true"></i> Vue</li>
+        </ul>
+      </li>
+      <li class="main-list">
+        <a href="#"><i class="fa fa-tags" aria-hidden="true"></i>
+          Python</a>
+        <ul>
+          <li class="sub-list" (click)="joinRoom()"><i class="fa fa-tag" aria-hidden="true"></i> Django</li>
+          <li class="sub-list" (click)="joinRoom()"><i class="fa fa-tag" aria-hidden="true"></i> Flask</li>
+        </ul>
+      </li>
+      <li class="main-list personal" (click)="profile()"> 
+        <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Profile </a>
+      </li>
+      <li class="main-list personal" (click)="logout()"> 
+        <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out </a>
+      </li>
+    </ul> 
+  </div>
+  <span (click)="openNav()"><i class="fa fa-bars"></i></span>
+  <span class="header-title">CHAT-APP</span>
+</mat-toolbar>
+<!-- end Topbar -->
+

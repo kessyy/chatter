@@ -1,0 +1,47 @@
+@import '../../pages/private-rooms/private-room.component.scss';
+
+.general-rooms-area {
+  overflow: hidden;
+}
+
+app-profile-area,
+app-app-side-card {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+app-edit-user {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  left: 12%;
+}
+
+@media only screen and (max-width: 768px) {
+  app-topbar {
+    display: none;
+  }
+
+  app-main-topbar,
+  app-side-card {
+    display: block;
+  }
+
+  app-side-card-popup {
+    display: none;
+  }
+
+  app-profile-area,
+  app-app-side-card {
+    left: 7px;
+  }
+
+  app-edit-user {
+    left: 0px;
+  }
+
+  .col-lg-10 {
+    padding: 0;
+  }
+}

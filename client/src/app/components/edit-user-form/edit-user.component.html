@@ -1,0 +1,203 @@
+<div class="modal-overlay"></div>
+<a href="#" (click)="show('popup1')"></a>
+<div 
+  class="mb-5 edit-user-form" 
+  id="edit-user-form"
+  *ngIf="isEditUser"
+  id="popup1" 
+>
+  <div class="mt-5">
+    <i class="icofont-close-line-circled" (click)="closeEditUser()"></i>
+    <h4 class="mb-4">Edit Profile</h4>
+    <form [formGroup]="EditUserForm" (ngSubmit)="onSubmitUser()">
+
+      <div class="col-lg-12">
+        <div class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Crop Image</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  (click)="onCloseHandled()"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <image-cropper
+                  [imageChangedEvent]="imageChangedEvent"
+                  [imageURL]="imageURL"
+                  [maintainAspectRatio]="true"                    
+                  [containWithinAspectRatio]="containWithinAspectRatio"
+                  [aspectRatio]="aspectRatio"
+                  [resizeToWidth]="400"
+                  [cropperMinWidth]="400"
+                  [onlyScaleDown]="true"
+                  [roundCropper]="false"
+                  [canvasRotation]="canvasRotation"
+                  [transform]="transform"
+                  [alignImage]="'center'"
+                  [style.display]="showCropper ? null : 'none'"
+                  format="png, jpeg"
+                  (imageCropped)="imageCropped($event)"
+                  (imageLoaded)="imageLoaded()"
+                  (cropperReady)="cropperReady($event)"
+                  (loadImageFailed)="loadImageFailed()"
+                ></image-cropper>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="cropImage()"
+                >
+                  Crop
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12">
+        <div class="create-photo-item">
+          <div class="create-photo-left">
+            <div class="d-table">
+              <div class="d-table-cell">
+                <div class="form-group">
+                  <div *ngIf="!croppedImage" class="upload-text">Upload your display Photo *                          
+                  </div>
+                  <i *ngIf="!croppedImage" class="icofont-photobucket"></i>
+                  <input
+                    *ngIf="!croppedImage"
+                    class="form-control-file"
+                    type="file"
+                    accept="image/png, image/jpeg"
+                    (change)="onImageChange($event)"
+                  >
+                </div>
+                <div *ngIf="croppedImage" class="image-container">
+                  <i class="icofont-close" (click)="onRemoveImge()"></i>
+                  <img id="image" [src]="croppedImage" alt="profile image"/>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="submitted && !croppedImage" class="is-invalid">
+              Photo required
+            </div>
+            <div *ngIf="!isAllowedImage" class="is-invalid">
+              width & height max 400px and not greater than 2 MB
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 mt-5">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter first name"
+            formControlName="firstName"
+          >
+          <div *ngIf="submitted && f.firstName.errors" class="is-invalid">
+            <div *ngIf="f.firstName.errors.required">first name required</div>
+          </div>
+        </div>
+      </div>
+          
+      <div class="col-lg-12">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter last name"              
+            formControlName="lastName"
+           >
+          <div *ngIf="submitted && f.lastName.errors" class="is-invalid">
+            <div *ngIf="f.lastName.errors.required">Last name required</div>
+          </div>
+        </div>
+      </div>
+          
+      <div class="col-lg-12">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter display name"
+            formControlName="displayName"
+          >
+          <div *ngIf="submitted && f.displayName.errors" class="is-invalid">
+            <div *ngIf="f.displayName.errors.required">Display name required</div>
+          </div>
+        </div>
+      </div>
+
+          <!-- <div class="col-lg-12">
+            <div class="form-group">
+              <ngx-intl-tel-input
+                [preferredCountries]="preferredCountries"
+                [enableAutoCountrySelect]="true"
+                [enablePlaceholder]="true"
+                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                [selectedCountryISO]="CountryISO.Uganda"
+                [phoneValidation]="true"
+                [customPlaceholder]="772123456"
+                [numberFormat]="772123456"
+                name="phone"
+                formControlName="telephone">
+              </ngx-intl-tel-input>
+              <div *ngIf="submitted && f.telephone.errors" class="is-invalid">
+                <div *ngIf="f.telephone.errors.required">Telephone required</div>
+                <div *ngIf="f.telephone.errors?.validatePhoneNumber">Invalid Number</div>
+              </div>
+            </div>
+          </div> -->
+          <!-- TODO: Decide if needed -->
+          <!-- <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="status"
+            >
+            <div *ngIf="submitted && f.status.errors" class="is-invalid">
+              <div *ngIf="f.status.errors.required">Status required</div>
+            </div>
+          </div> -->
+      <div class="col-lg-12">
+        <div class="form-group">
+          <textarea
+            id="your_bio"
+            rows="8"
+            class="form-control"
+            placeholder="Tell us about yourself"
+            formControlName="bio"
+          ></textarea>
+          <div *ngIf="submitted && f.bio.errors" class="is-invalid">
+            <div *ngIf="f.bio.errors.required">Bio required</div>
+          </div>
+        </div>
+      </div>
+          
+      <div class="col-lg-12 mb-5 ">
+        <app-button
+          [buttonText]="'Save'"
+          [buttonClassString]="'main-class'"
+          [buttonType]="'submit'"
+        > 
+        </app-button>
+        <app-button
+          [buttonText]="'Discard'"
+          [buttonClassString]="'main-class close-btn'"
+          (click)="closeEditUser()"
+        > 
+        </app-button>
+      </div>
+    </form>
+  </div>
+</div>

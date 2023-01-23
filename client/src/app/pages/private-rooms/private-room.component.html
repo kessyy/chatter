@@ -1,0 +1,52 @@
+<!-- <app-topbar></app-topbar> -->
+<div id="general-rooms-area" class="general-rooms-area">
+  <app-main-topbar 
+    (profileButtonClicked)="showProfileArea($event)">
+  </app-main-topbar>
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="row">
+        <app-side-card 
+          [isPrivateRoom]="privateRoom"
+          [showMembersComponent]="showMembersComponent"
+          [showMembersComponentCloseButton]="showMembersComponentCloseButton"
+        >
+        </app-side-card>
+      </div>
+    </div>
+
+    <div class="col-lg-10">
+      <app-sub-topbar
+        (RoomsButtonClicked)="showRoomsArea($event)"
+        [isMembers]="isMembers"
+        >
+      </app-sub-topbar>
+      <div class="row">  
+        <app-messages-area></app-messages-area> 
+      </div>
+      <div class="row">
+        <app-profile-area
+          [isShowProfileComponent]="isShowProfileComponent"
+          id="profile-area"
+          [componentClassString]="'personal-information'"
+          (openEditForm)="onEditUser($event)"
+          (profileButtonClicked)="closeProfileArea($event)">
+        </app-profile-area>
+        <app-side-card-popup
+          [showAvatarsComponent]="showAvatarsComponent"
+          [roomsPopUpClass]="'roomsPopUpClass'"
+          [PopUpId]="'popup1'"
+          [showAvatarsComponentCloseButton]="showAvatarsComponentCloseButton"
+          (RoomsButtonClicked)="closeRoomsArea($event)"
+          [isRooms]="'isRooms'"
+        >
+        </app-side-card-popup>
+      </div>
+    </div>
+  </div>
+  <app-edit-user 
+    [isEditUser]="isEditUser"
+    (openEditForm)="closeEditUserForm($event)"
+    >
+  </app-edit-user>
+</div>

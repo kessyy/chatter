@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-md-5">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        [(ngModel)]="user"
+        class="form-control"
+        id="username"
+        placeholder="Enter username"
+      >
+    </div>
+  </div>
+  <div class="col-md-5">
+    <label for="roomInput">Choose a room</label>
+    <select name="roomInput" id="roomInput" class="form-control" [(ngModel)]="room">
+      <option value="Java">Java</option>
+      <option value="HTML">HTML</option>
+      <option value="Design">Design</option>
+    </select>
+  </div>
+  <div class="col-md-2 align-self-center mt-2 btns">
+    <div class="pull-right">
+      <button type="button" class="btn btn-primary" (click)="joinRoom()">Join</button>
+      <button type="button" class="btn btn-outline-danger" (click)="leaveRoom()">Exit</button>
+    </div>
+  </div>
+</div>
+<hr/>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul
+      class="conversation-list disable-scrollbars"
+      [style.maxHeight.px]="maxHeight">
+      <li
+        class="clearfix"
+        *ngFor="let chat of chatData"
+        [ngClass]="{'is-current-user': chat.user === user}">
+        <div class="chat-avatar">
+          <img class="avatar" src="{{chat.image}}" alt="user">
+          <i>{{ chat.time }}</i>
+        </div>
+        <div class="conversation-text">
+          <div class="chat-text">
+            <i>{{ chat.user }}</i>
+            <p>{{ chat.message }}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-9">
+    <input type="text" class="form-control" placeholder="Enter message" [(ngModel)]="message">
+  </div>
+
+  <div class="col-lg-3">
+    <button
+      type="submit"
+      class="btn btn-danger chat-send btn-block"
+      (click)="sendMessage()"
+    >Send
+    </button>
+  </div>
+</div>
+
+
+

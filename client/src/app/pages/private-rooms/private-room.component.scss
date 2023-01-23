@@ -1,0 +1,53 @@
+.general-rooms-area {
+  overflow: hidden;
+
+  .col-lg-10 {
+    padding: 0;
+  }
+
+  app-side-card {
+    display: block;
+    padding: 0;
+  }
+}
+
+app-topbar {
+  display: none;
+}
+
+app-main-topbar {
+  display: block;
+}
+
+app-profile-area,
+app-side-card-popup,
+app-edit-user {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+@media only screen and (max-width: 768px) {
+  .general-rooms-area {
+    .col-lg-10 {
+      padding-left: 8px;
+    }
+  }
+
+  app-main-topbar {
+    display: block;
+  }
+
+  app-side-card {
+    display: none;
+  }
+
+  app-profile-area,
+  app-side-card {
+    left: 7px;
+  }
+
+  app-edit-user {
+    left: 0px;
+  }
+}

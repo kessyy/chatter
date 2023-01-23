@@ -1,0 +1,15 @@
+.form-group {
+  margin-bottom: var(--form-group-margin-bottom, 1rem);
+
+  .select-height-class {
+    height: 32px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .form-group {
+    .select-height-class {
+      padding: 0;
+    }
+ }
+}

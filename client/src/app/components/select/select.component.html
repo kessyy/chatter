@@ -1,0 +1,14 @@
+<div class="form-group">
+  <label *ngIf="showLabel">{{ selectLabel }}</label>
+  <select
+    #select
+    class="form-control wide {{ selectHeightClass }} {{ selectClass }}"
+    [ngClass]="{'is-invalid': invalidInput}"
+    [(ngModel)]="input"
+    (ngModelChange)="valueChanged($event)"
+    (blur)="onTouch()"
+  >
+    <option value="null" [disabled]="true">{{defaultText}}</option>
+    <option *ngFor="let selectText of selectTexts" [value]="selectText">{{ selectText }}</option>
+  </select>
+</div>

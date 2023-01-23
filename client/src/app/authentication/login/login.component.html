@@ -1,0 +1,79 @@
+<div class="login-area">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="row side-card">
+        <div class="col-md-12">
+          <h1 class="p-5">CHAT APP</h1>
+          <span></span>
+          <p class="p-2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Donec faucibus ipsum non mollis sollicitudin. 
+            Maecenas elementum eros felis, at varius ante blandit imperdiet. 
+            In in gravida enim.
+          </p>
+          <p>
+            <a class="p-4" routerLink="/authenticate/create-account">Don't have an account?</a>
+          </p>
+          <p>
+            <a class="p-4" routerLink="/authenticate/forgot-password">Forgot Password?</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9 p-5 form-area">
+      <img class="logo" src="../../../assets/images/mesh.png">
+      <form class="p-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="">
+            <div class="col-12">
+              <div class="form-group">
+                <label>Email: *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Email"
+                  formControlName="email"
+                >
+                <div *ngIf="submitted && f.email.errors" class="is-invalid">
+                  <div *ngIf="f.email.errors.required">Email required</div>
+                  <div *ngIf="f.email.errors.email ||
+                            f.email.errors.pattern"> Email must be a valid
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12">
+              <div class=" form-group">
+                <label>Password: *</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Enter Password"
+                  formControlName="password"
+                >
+                <div *ngIf="submitted && f.password.errors" class="is-invalid">
+                  <div *ngIf="f.password.errors.required">Password required</div>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+        <div class="login-sign-in">
+          <a class="p-2 mobile-text" routerLink="/authenticate/forgot-password">Forgot Password?</a>
+          <a class="p-4 mobile-text" routerLink="/authenticate/create-account">Don't have an account?</a>
+          <div class="text-center p-2">
+            <app-button
+              [buttonText]="'Log In'"
+              [buttonClassString]="'main-class'"
+              [buttonType]="'submit'"
+            > 
+            </app-button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

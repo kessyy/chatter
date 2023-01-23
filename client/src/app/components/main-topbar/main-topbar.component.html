@@ -1,0 +1,65 @@
+<!-- Topbar Start -->
+<mat-toolbar>
+  <div class="row">
+    <div class="col-lg-2">
+      <span class="header-title">ChatApp</span>
+      <span class="header-title mobile-screen">Jane Foster</span>
+    </div>
+    <div class="col-lg-8">
+      <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+        <div class="col-md-12 search-form-area form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search"
+            formControlName="searchWord"
+          >
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-2">
+      <span class="icons-right">
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="settings">
+          <mat-icon>settings</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="showProfile()">
+            <i class="fa fa-user" aria-hidden="true"></i> Profile
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+          </button>
+        </mat-menu>
+      </span>
+    </div>
+  </div>
+  <!-- <span class="header-title">ChatApp</span> -->
+  <!-- <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+    <div class="col-md-12 search-form-area form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search"
+        formControlName="searchWord"
+      >
+    </div>
+  </form> -->
+  <!-- <span class="icons-right">
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="settings">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="showProfile()">
+        <i class="fa fa-user" aria-hidden="true"></i> Profile
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+      </button>
+    </mat-menu>
+  </span> -->
+</mat-toolbar>
+<!-- end Topbar -->
+<app-profile-area 
+  *ngIf="showProfileComponent"
+  (profileButtonClicked)="closeProfile()"
+></app-profile-area>

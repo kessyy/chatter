@@ -1,0 +1,51 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 06/04/2020 07:47
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+font-style: normal;
+}
+
+.flaticon-cv:before { content: "\f100"; }
+.flaticon-approved:before { content: "\f101"; }
+.flaticon-customer-service:before { content: "\f102"; }
+.flaticon-settings:before { content: "\f103"; }
+.flaticon-layers:before { content: "\f104"; }
+.flaticon-house:before { content: "\f105"; }
+.flaticon-analysis:before { content: "\f106"; }
+.flaticon-sun:before { content: "\f107"; }
+.flaticon-hand:before { content: "\f108"; }
+.flaticon-neural:before { content: "\f109"; }
+.flaticon-dish:before { content: "\f10a"; }
+.flaticon-truck:before { content: "\f10b"; }
+.flaticon-employee:before { content: "\f10c"; }
+.flaticon-curriculum:before { content: "\f10d"; }
+.flaticon-enterprise:before { content: "\f10e"; }
+.flaticon-businessman-paper-of-the-application-for-a-job:before { content: "\f10f"; }
+.flaticon-no-money:before { content: "\f110"; }
+.flaticon-apple:before { content: "\f111"; }
+.flaticon-job-search:before { content: "\f112"; }
+.flaticon-recruitment:before { content: "\f113"; }
+.flaticon-playstore:before { content: "\f114"; }

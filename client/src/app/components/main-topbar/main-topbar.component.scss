@@ -1,0 +1,89 @@
+mat-toolbar {
+  display: block;
+  background-color: #7476F5;
+  height: 50px;
+  color: #ffffff;
+
+  .header-title {
+    font-size: 21px;
+
+    &.mobile-screen {
+      display: none;
+    }
+
+    @media only screen and (max-width: 768px) {
+      display: none;
+
+      &.mobile-screen {
+        display: block;
+      }
+    }
+  }
+
+  form {
+    width: 100%;
+    left: -2%;
+    top: 25%;
+    position: absolute;
+
+    .form-group {
+      display: inline-block;
+      width: 100%;
+
+      .form-control {
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid #7476F5 !important;
+      }
+
+      ::placeholder {
+        color: #95969c;
+        font-size: 20px;
+        margin-left: 15px;
+      }
+
+      input {
+        background-color: #cfcff8;
+        font-size: 20px;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      display: none;
+      margin-left: -6%;
+    }
+  }
+
+  .icons-right {
+    display: flex;
+    justify-content: right;
+    margin-right: 15px;
+    width: 100%;
+
+    .settings {
+      &:hover::after {
+        content: "Settings";
+        position: absolute;
+        font-size: 10px;
+        z-index: 10000;
+        top: 19px;
+        right: 14px;
+      }
+    }
+
+    mat-icon {
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      position: absolute;
+      display: flex;
+      justify-content: right;
+      margin-top: -40px;
+      margin-left: -20px;
+      width: 100%;
+    }
+  }
+}
