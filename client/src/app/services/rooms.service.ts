@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Room } from '../models/room.model';
 
 @Injectable({ providedIn: 'root' })
 export class RoomService {
-  headers = new HttpHeaders({ 'X-Requested-With': 'XMLHttpRequest' });
+  headers: HttpHeaders = new HttpHeaders({ 'X-Requested-With': 'XMLHttpRequest' });
 
   constructor(
     private http: HttpClient,
@@ -14,9 +15,9 @@ export class RoomService {
   /**
    * Get all rooms
    */
-  getMessages() {
+  getRooms() {
     return this.http.get(
-      'rooms/details',
+      'rooms/all-rooms',
       { headers: this.headers })
       .pipe(map(response => response));
   }
@@ -25,11 +26,17 @@ export class RoomService {
    * Add user id to rooms
    */
   addUserToRoom(id: number, users: number) {
-    console.log('clicked');
-    return this.http.put(`rooms/add-user/${id}`, users,
-      { headers: this.headers })
-      .pipe(map(response => response));
+    console.log('clicked', { users });
+    return this.http.put(`rooms/add-user/${id}`, { users }, { headers: this.headers }
+    ).pipe(map(response => response));
   }
+  // addUserToRoom(id: number, room_name: string) {
+  //   console.log('clicked', `rooms/${id}`, room_name);
+  //   return this.http.put(`rooms/${id}`, room_name,
+  //     { headers: this.headers })
+  //     .pipe(map(response => response));
+  // }
+
 
   /**
    * Search the messages

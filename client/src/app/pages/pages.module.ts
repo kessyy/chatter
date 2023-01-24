@@ -24,6 +24,7 @@ import { ButtonComponent } from '../components/button/button.component';
 import { SideCardPopupComponent } from '../components/side-card-popup/side-card-popup.component';
 import { SideCardComponent } from '../components/side-card/side-card.component';
 import { MessagesAreaComponent } from '../components/messages-area/messages-area.component';
+import { PersonalAreaComponent } from '../components/personal-area/personal-area.component';
 import { ProfileAreaComponent } from '../components/profile-area/profile-area.component';
 import { TopbarComponent } from '../components/topbar/topbar.component';
 import { MainTopbarComponent } from '../components/main-topbar/main-topbar.component';
@@ -40,6 +41,7 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
     SideCardPopupComponent,
     SideCardComponent,
     MessagesAreaComponent,
+    PersonalAreaComponent,
     ProfileAreaComponent,
     TopbarComponent,
     MainTopbarComponent,
@@ -72,6 +74,7 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
     SideCardPopupComponent,
     SideCardComponent,
     MessagesAreaComponent,
+    PersonalAreaComponent,
     ProfileAreaComponent,
     TopbarComponent,
     SubTopbarComponent,

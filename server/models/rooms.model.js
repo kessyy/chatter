@@ -30,6 +30,7 @@ const createRoom = async (user) => {
 };
 
 const updateRoom = async (id, data) => {
+  console.log('updated room')
   try {
   const { room_name } = data;
   const result = await database.query(`UPDATE rooms SET room_name = '${room_name}', updated_at = NOW() WHERE id = ${id}`);

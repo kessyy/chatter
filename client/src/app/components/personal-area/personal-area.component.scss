@@ -48,6 +48,13 @@ $gray-700: #4B4B5A;
   height: 85vh;
 
   .current-user {
+    margin-left: 50px;
+
+    img {
+      border-radius: 50%;
+      width: 50%;
+    }
+
     p {
       font-size: 20px;
     }

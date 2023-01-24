@@ -35,7 +35,6 @@ export class SubTopbarComponent implements OnInit {
     this.dataService.changedSelectedUser.subscribe(user => {
       this.user = user;
       console.log('imported selected user', this.user)
-
     });
     this.searchForm = this.formBuilder.group({
       searchWord: [''],

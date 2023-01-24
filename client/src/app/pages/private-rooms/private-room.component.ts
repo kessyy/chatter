@@ -16,6 +16,7 @@ export class PrivateRoomComponent implements OnInit {
   showAvatarsComponent: boolean;
   showAvatarsComponentCloseButton: boolean = true;
   showMembersComponentCloseButton: boolean = false;
+  personalSpace: boolean = true;
 
   constructor(
   ) { }
@@ -45,6 +46,10 @@ export class PrivateRoomComponent implements OnInit {
 
   closeRoomsArea(showAvatarsComponent: boolean) {
     this.showAvatarsComponent = showAvatarsComponent;
+  }
+
+  showPersonalSpace(personalSpace: boolean) {
+    this.personalSpace = personalSpace;
   }
 
 }

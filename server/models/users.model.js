@@ -15,9 +15,9 @@ exports.getById = async (id) => {
     [id]
   );
 
-  // Get the room associated with the user user
-  const room = await Room.getById(results[0].room_id);
-  results[0].room = room;
+  // // Get the room associated with the user user
+  // const room = await Room.getById(results[0].room_id);
+  // results[0].room = room;
   return results[0];
 };
 

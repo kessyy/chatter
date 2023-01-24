@@ -10,19 +10,19 @@ const secretKey = 'mynotsosecretkey';
 const userRouter = require('./routes/user.route');
 const messageRouter = require('./routes/message.route');
 const roomRouter = require('./routes/room.route');
-// const winston = require('winston');
-// const logger = winston.createLogger({
-//   level: 'info',
-//   format: winston.format.json(),
-//   transports: [
-//     //
-//     // - Write to all logs with level `info` and below to `combined.log` 
-//     // - Write all logs error (and below) to `error.log`.
-//     //
-//     new winston.transports.File({ filename: 'error.log', level: 'error' }),
-//     new winston.transports.File({ filename: 'combined.log' })
-//   ]
-// });
+const winston = require('winston');
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  transports: [
+    //
+    // - Write to all logs with level `info` and below to `combined.log` 
+    // - Write all logs error (and below) to `error.log`.
+    //
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' })
+  ]
+});
 // logger.info('This is an info message');
 // logger.warn('This is a warning message');
 app.use(cors());

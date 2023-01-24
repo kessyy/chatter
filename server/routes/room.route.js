@@ -6,7 +6,7 @@ const rooms = require('../controllers/room.controller');
 router.post('/', rooms.createNewRoom);
 
 // get all rooms
-router.get('/', rooms.getAllRooms);
+router.get('/all-rooms', rooms.getAllRooms);
 
 // get single room
 router.get('/:id', rooms.getRoomById);

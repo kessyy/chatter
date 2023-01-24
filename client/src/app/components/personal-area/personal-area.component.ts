@@ -22,18 +22,6 @@ export class PersonalAreaComponent implements OnInit {
   messageForm: FormGroup;
   EditUserForm: FormGroup;
   chatData: any = [];
-  // user = [
-  //   {
-  //     id: 1,
-  //     first_name: 'Jane',
-  //     last_name: 'Doe',
-  //     displayName: 'the_mighty_jane',
-  //     avatar: '',
-  //     status: 'Online',
-  //     phone: '751234567',
-  //     bio: 'A bunch of words written here. A bunch of words written here. A bunch of words written here.',
-  //   }
-  // ];
   user: User;
   room: string;
   message: string;
@@ -52,11 +40,12 @@ export class PersonalAreaComponent implements OnInit {
 
   ngOnInit(): void {
     // TODO: change this to logged in user
-    this.userProfileService.getSingleUser(2).subscribe(
-      response => {
-        this.user = response as User;
-        console.log('logged in', this.user)
-      });
+    setTimeout(() =>
+      this.userProfileService.getSingleUser(2).subscribe(
+        response => {
+          this.user = response as User;
+          console.log('logged in', this.user)
+        }), 2000)
 
     // populate the chat whenever chat events occur
     let container = document.querySelector('.conversation-list');

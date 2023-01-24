@@ -44,7 +44,7 @@ const messageRouter = express.Router();
 const messages = require('../controllers/message.controller');
 
 // Get all messages
-messageRouter.get('/details', messages.getMessages);
+messageRouter.get('/message-details', messages.getMessages);
 
 // Get a single message
 messageRouter.get('/:id', messages.getMessageById);

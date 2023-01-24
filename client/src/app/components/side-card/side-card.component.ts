@@ -4,6 +4,9 @@ import { UserProfileService } from '../../services/user.service';
 import { DataService } from '../../services/data.service';
 import { RoomService } from '../../services/rooms.service';
 import { User } from '../../models/user.model';
+import { Room } from '../../models/room.model';
+import { first } from 'rxjs/operators';
+
 @Component({
   selector: 'app-side-card',
   templateUrl: './side-card.component.html',
@@ -16,6 +19,7 @@ export class SideCardComponent implements OnInit {
   @Input() subroomsPopUpClass: string;
   @Input() PopUpId: string;
   @Output() MembersButtonClicked = new EventEmitter<boolean>();
+  @Output() openPersonalSpace = new EventEmitter<boolean>();
   // user = [
   //   {
   //     id: 1,
@@ -27,7 +31,9 @@ export class SideCardComponent implements OnInit {
   //   }
   // ];
   user: User[];
+  currentUser: User;
   users: User[];
+  rooms: Room[];
   room: string;
   selectedUser: any;
 
@@ -39,6 +45,11 @@ export class SideCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // TODO: get logged in User
+    this.userProfileService.getSingleUser(2).subscribe(response => {
+      this.currentUser = response as User;
+    });
+
     this.getUsers();
   }
 
@@ -57,9 +68,10 @@ export class SideCardComponent implements OnInit {
   }
 
   /**
-  * Notifies all users when a new user joins a room
+  * Notifies all users when a new user joins a room and closes personal space
   */
   joinRoom(user: User) {
+    this.openPersonalSpace.emit(false);
     this.chatService.joinRoom(
       {
         user: this.user,
@@ -67,12 +79,29 @@ export class SideCardComponent implements OnInit {
       });
     this.selectedUser = user;
     this.dataService.setSelectedUser(this.selectedUser);
-    this.roomService.addUserToRoom(6, user.id);
-    console.log('selected user', user.id)
+    const users = user.id;
+    this.roomService.addUserToRoom(12, users).pipe(first()).subscribe(response => {
+      console.log('fdnfd', response)
+    }, error => {
+      console.log('endpoint error', error)
+    });
+    console.log('selected user', users)
+    // this.roomService.getRooms().subscribe(response => {
+    //   this.rooms = response['rooms'];
+    //   console.log('rooms', this.rooms);
+    // });
+  }
+
+
+  /**
+  * Enter personal space
+  */
+  personalSpace() {
+    this.openPersonalSpace.emit(true);
   }
 
   /**
-    * Notifies all users when a new user leaves a room
+  * Notifies all users when a new user leaves a room
   */
   leaveRoom() {
     this.chatService.leaveRoom(

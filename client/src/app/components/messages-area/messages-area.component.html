@@ -26,7 +26,7 @@
               *ngFor="let message of messages"
               [ngClass]="{'is-current-user': message.user === user}">
               <div class="chat-avatar">
-                <img class="avatar" src="{{message.image}}" alt="user">
+                <img class="avatar" src="../../../assets/images/avatar.png" alt="user">
                 <i>{{ message.created_at }}</i>
               </div>
               <div class="conversation-text">

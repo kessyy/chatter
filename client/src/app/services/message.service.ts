@@ -16,7 +16,7 @@ export class MessageService {
    */
   getMessages() {
     return this.http.get(
-      'messages/details',
+      'messages/message-details',
       { headers: this.headers })
       .pipe(map(response => response));
   }

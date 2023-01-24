@@ -6,10 +6,10 @@
           <div class="current-user">
             <div class="row">
               <div class="col-md-2">
-                <img class="avatar" src="{{user.avatar}}" alt="current_user">
+                <img class="avatar" src="../../../assets/images/avatar.png" alt="current_user">
               </div>
               <div class="col-md-4">
-                <p>{{user.alias_name + ' (you)'}}</p>
+                <p>{{user?.alias_name + ' (you)'}}</p>
               </div>
             </div>
             <div class="row">
@@ -19,13 +19,14 @@
             </div>
           </div>
           <ul
-            class="conversation-list disable-scrollbars"
+            class="conversation-list disable-scrollbars pt-5"
             [style.maxHeight.px]="maxHeight">
             <li
               class="clearfix"
               *ngFor="let message of messages"
               [ngClass]="{'is-current-user': message.user === user}">
               <div class="chat-avatar">
+                <img class="avatar" src="../../../assets/images/avatar.png" alt="user">
                 <i>{{ message.created_at }}</i>
               </div>
               <div class="conversation-text">

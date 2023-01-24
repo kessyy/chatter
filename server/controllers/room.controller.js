@@ -50,13 +50,15 @@ exports.updateRoom = async (req, res) => {
 exports.addUserToRoom = async (req, res) => {
   try {
     const { id } = req.params;
-    const { users } = req.body;
-    const addedUser = await addUserToRoom(id, { users });
+    const { users }  = req.body;
+    const addedUser = await addUserToRoom(id,  {users});
     res.status(200).json({ addedUser });
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: error.message });
   }
 };
+
 
 exports.softDeleteRoom = async (req, res) => {
   try {

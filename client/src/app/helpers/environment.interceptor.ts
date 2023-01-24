@@ -11,6 +11,7 @@ export class EnvironmentInterceptor implements HttpInterceptor {
     const update = {} as any;
     update.url = req.url.includes('https') ? req.url :
       `${environment.apiEndpoint}/${req.url}`;
+    console.log('intercept', update.url)
     return next.handle(req.clone(update));
   }
 }

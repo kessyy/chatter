@@ -2,6 +2,8 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChatService } from '../../services/chat.service';
+import { UserProfileService } from '../../services/user.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-profile-area',
@@ -17,17 +19,7 @@ export class ProfileAreaComponent implements OnInit {
   @Output() openEditForm = new EventEmitter<boolean>();
   submitted: boolean;
   EditUserForm: FormGroup;
-  user = [
-    {
-      id: 1,
-      firstName: 'Jane',
-      lastName: 'Doe',
-      displayName: 'the_mighty_jane',
-      status: 'Online',
-      phone: '0751234567',
-      bio: 'A bunch of words written here. A bunch of words written here. A bunch of words written here.',
-    }
-  ];
+  user: User;
   room: string;
   showEditUserForm: boolean;
   @ViewChild('userForm', { static: false })
@@ -35,17 +27,24 @@ export class ProfileAreaComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private userProfileService: UserProfileService,
     private chatService: ChatService
   ) { }
 
   ngOnInit(): void {
+    // TODO: change this to logged in user
+    this.userProfileService.getSingleUser(2).subscribe(
+      response => {
+        this.user = response as User;
+      });
+
     this.EditUserForm = this.formBuilder.group({
-      firstName: ['Esther', [Validators.required, Validators.minLength(2)]],
-      lastName: [this.user[0].lastName, [Validators.required, Validators.minLength(2)]],
-      displayName: [this.user[0].displayName, [Validators.required, Validators.minLength(2)]],
-      status: [this.user[0].status, [Validators.required]],
-      telephone: [this.user[0].phone, [Validators.required]],
-      bio: [this.user[0].bio, [Validators.required, Validators.minLength(50)]],
+      firstName: [this.user.first_name, [Validators.required, Validators.minLength(2)]],
+      lastName: [this.user.last_name, [Validators.required, Validators.minLength(2)]],
+      displayName: [this.user.alias_name, [Validators.required, Validators.minLength(2)]],
+      status: [this.user.is_active, [Validators.required]],
+      telephone: [this.user.telephone, [Validators.required]],
+      bio: [this.user.bio, [Validators.required, Validators.minLength(50)]],
     });
   }
 

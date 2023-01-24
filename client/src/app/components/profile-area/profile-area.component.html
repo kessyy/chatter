@@ -10,9 +10,9 @@
     </div>
     <img class="display-picture-avatar" src="../../../assets/images/avatar.png">
     <div class="p-5">
-      <p class="profile-details"> {{ user[0].firstName + ' ' + user[0].lastName }} </p>
-      <p class="profile-details"> {{ user[0].displayName }} </p>
-      <p class="profile-details"> {{ user[0].bio }} </p>
+      <p class="profile-details"> {{ user?.first_name + ' ' + user?.last_name }} </p>
+      <p class="profile-details"> {{ user?.alias_name }} </p>
+      <p class="profile-details"> {{ user?.bio }} </p>
     </div>
     <app-button
       [buttonText]="'Edit Profile'"

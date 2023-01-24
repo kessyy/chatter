@@ -20,6 +20,16 @@ export class UserProfileService {
   }
 
   /**
+    * Gets single Users
+    */
+  getSingleUser(id: number) {
+    return this.http.get(
+      `users/${id}`,
+      { headers: this.headers })
+      .pipe(map(response => response));
+  }
+
+  /**
    * Updates the user in the db
    *
    * @param formData to edit
@@ -27,7 +37,7 @@ export class UserProfileService {
    * @returns Observable<any>
    */
   editUser(formData: any, id: number) {
-    return this.http.put(`user/${id}`, formData);
+    return this.http.put(`user / ${id}`, formData);
   }
 
   /**
@@ -72,7 +82,7 @@ export class UserProfileService {
     imageHeaders.append('Content-Type', 'multipart/form-data');
     imageHeaders.append('Accept', 'application/json');
     return this.http.post(
-      `profile-documents/${id}`,
+      `profile - documents / ${id}`,
       formData,
       { headers: imageHeaders })
       .pipe(map(response => response));
@@ -89,7 +99,7 @@ export class UserProfileService {
     imageHeaders.append('Content-Type', 'multipart/form-data');
     imageHeaders.append('Accept', 'application/json');
     return this.http.post(
-      `profile-documents-update/${id}`,
+      `profile - documents - update / ${id}`,
       formData,
       { headers: imageHeaders })
       .pipe(map(response => response));
@@ -103,7 +113,7 @@ export class UserProfileService {
      */
   deleteUser(id: number) {
     return this.http.delete(
-      `user/${id}`,
+      `user / ${id}`,
       { headers: this.headers });
   }
 }
