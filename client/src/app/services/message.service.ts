@@ -41,7 +41,7 @@ export class MessageService {
    */
   postMessage(message: Message) {
     return this.http.post(
-      'messages/send',
+      'messages/send-message',
       message,
       { headers: this.headers })
       .pipe(map(response => response));

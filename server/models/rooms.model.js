@@ -41,13 +41,39 @@ const updateRoom = async (id, data) => {
 };
 
 const addUserToRoom = async (id, data) => {
-  console.log('checking');
   try {
     const { users } = data
     const result = await database.query(`UPDATE rooms SET users = concat(users, ',${users}'), updated_at = NOW() WHERE id = ${id}`);
     return result;
   } catch (error) {
     throw new Error(`Error adding user to room: ${error}`);
+  }
+}
+
+// const addUserToRoom = async (id, data) => {
+//   try {
+//     const { users } = data;
+//     const checkUser = await database.query(`SELECT users FROM rooms WHERE id = ${id}`);
+//     if(!checkUser[0].users.includes(users)){
+//     const result = await database.query(`UPDATE rooms SET users = concat(users, ',${users}'), updated_at = NOW() WHERE id = ${id}`);
+//     return result;
+//     } else {
+//     throw new Error(`Error adding user to room: ${error}`);
+//     }
+//   } catch (error) {
+//     throw new Error(`Error adding user to room: ${error}`);
+//   }
+// }
+
+
+const addMessageToRoom = async (id, data) => {
+  console.log('adding message')
+  try {
+    const { messages } = data
+    const result = await database.query(`UPDATE rooms SET messages = concat(messages, ',${messages}'), updated_at = NOW() WHERE id = ${id}`);
+    return result;
+  } catch (error) {
+    throw new Error(`Error adding message to room: ${error}`);
   }
 }
 
@@ -66,5 +92,6 @@ module.exports = {
   createRoom,
   updateRoom,
   addUserToRoom,
+  addMessageToRoom,
   softDeleteRoom
 };

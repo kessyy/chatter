@@ -15,7 +15,10 @@ router.get('/:id', rooms.getRoomById);
 router.put('/:id', rooms.updateRoom);
 
 // update users in room
-router.put('/add-user/:id', rooms.addUserToRoom)
+router.put('/add-user/:id', rooms.addUserToRoom);
+
+// update messages in room
+router.put('/add-message/:id', rooms.addMessageToRoom)
 
 // delete room
 router.delete('/:id', rooms.softDeleteRoom);

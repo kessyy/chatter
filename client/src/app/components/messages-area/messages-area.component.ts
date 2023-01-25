@@ -1,11 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { first, mergeMap } from 'rxjs/operators';
 // import { AuthenticationService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
+import { UserProfileService } from '../../services/user.service'
 import { ChatService } from '../../services/chat.service';
 import { MessageService } from '../../services/message.service';
+import { RoomService } from '../../services/rooms.service';
 import { Message } from '../../models/message.model';
 import { User } from '../../models/user.model';
 
@@ -21,32 +23,32 @@ export class MessagesAreaComponent implements OnInit {
   messageForm: FormGroup;
   EditUserForm: FormGroup;
   chatData: any = [];
-  user = [
-    {
-      id: 1,
-      firstName: 'Jane',
-      lastName: 'Doe',
-      displayName: 'the_mighty_jane',
-      status: 'Online',
-      phone: '751234567',
-      bio: 'A bunch of words written here. A bunch of words written here. A bunch of words written here.',
-    }
-  ];
+  user: User;
   room: string;
   message: string;
   showEditUserForm: boolean;
   messages: Message[] = [];
+  sentMessage: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     // private authenticationService: AuthenticationService,
+    private userProfileService: UserProfileService,
+    private roomService: RoomService,
     private chatService: ChatService,
     private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
+    // TODO: change this to logged in user
+    this.userProfileService.getSingleUser(2).subscribe(
+      response => {
+        this.user = response as User;
+        console.log('logged in', this.user.id)
+      })
+
     // populate the chat whenever chat events occur
     let container = document.querySelector('.conversation-list');
     this.chatService.userJoinedRoom()
@@ -70,12 +72,9 @@ export class MessagesAreaComponent implements OnInit {
         this.message = '';
       });
 
-    // this.searchForm = this.formBuilder.group({
-    //   searchWord: [''],
-    // });
-
     this.messageForm = this.formBuilder.group({
-      message_body: [''],
+      // sender: [this.user.id],
+      message: [''],
     });
     this.getMessages();
   }
@@ -123,27 +122,25 @@ export class MessagesAreaComponent implements OnInit {
     })
   }
 
-  /**
-   * Sends a message to all users in the room
-   */
-  // sendMessage() {
-  //   this.chatService.sendMessage(
-  //     {
-  //       user: this.user,
-  //       room: this.room,
-  //       message: this.message
-  //     });
-  // }
-
   sendMessage() {
-    this.messageService.postMessage(this.messageForm.value).subscribe(
-      (response) => {
-        console.log(response);
+    this.messageService.postMessage({
+      id: 0,
+      user_id: this.user.id,
+      message_body: this.f.message.value
+    }).pipe(first()).subscribe(
+      response => {
+        this.sentMessage = response;
+        const message = this.sentMessage.addedMessage.insertId;
+        this.roomService.addMessageToRoom(2, message).pipe(first()).subscribe(response => {
+          console.log('endpoint response for message', response)
+        }, error => {
+          console.log('endpoint error', error)
+        });
       },
       (error) => {
         console.log(error);
       }
-    )
+    );
   }
 
   onSearch() {

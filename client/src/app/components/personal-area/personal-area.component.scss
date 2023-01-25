@@ -45,7 +45,7 @@ $gray-700: #4B4B5A;
 }
 
 .messages-card {
-  height: 85vh;
+  height: 80vh;
 
   .current-user {
     margin-left: 50px;
@@ -59,38 +59,6 @@ $gray-700: #4B4B5A;
       font-size: 20px;
     }
   }
-
-  // .search-area {
-  //   form {
-  //     width: 100%;
-  //     margin-left: 0;
-
-  //     .form-group {
-  //       display: inline-block;
-  //       width: 100%;
-
-  //       .form-control {
-  //         height: 40px;
-  //         border-radius: 5px;
-  //         border: 1px solid #7476F5 !important;
-  //       }
-
-  //       ::placeholder {
-  //         color: #95969c;
-  //         font-size: 20px;
-  //         margin-left: 15px;
-  //       }
-
-  //       input {
-  //         font-size: 20px;
-  //       }
-  //     }
-
-  //     @media only screen and (max-width: 767px) {
-  //       margin-left: -6%;
-  //     }
-  //   }
-  // }
 
   .disable-scrollbars {
     scrollbar-width: none;

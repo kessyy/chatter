@@ -17,6 +17,7 @@ import { User } from '../../models/user.model';
 })
 export class PersonalAreaComponent implements OnInit {
   @Input() maxHeight: string;
+  @Input() minHeight: string;
   @Input() isEditUser: boolean;
   @Input() isCloseEditUser: boolean;
   messageForm: FormGroup;
@@ -40,12 +41,11 @@ export class PersonalAreaComponent implements OnInit {
 
   ngOnInit(): void {
     // TODO: change this to logged in user
-    setTimeout(() =>
-      this.userProfileService.getSingleUser(2).subscribe(
-        response => {
-          this.user = response as User;
-          console.log('logged in', this.user)
-        }), 2000)
+    this.userProfileService.getSingleUser(2).subscribe(
+      response => {
+        this.user = response as User;
+        console.log('logged in', this.user)
+      })
 
     // populate the chat whenever chat events occur
     let container = document.querySelector('.conversation-list');
@@ -115,21 +115,8 @@ export class PersonalAreaComponent implements OnInit {
   getMessages() {
     this.messageService.getMessages().subscribe(response => {
       this.messages = response as Message[];
-      console.log('message', this.messages);
     })
   }
-
-  /**
-   * Sends a message to all users in the room
-   */
-  // sendMessage() {
-  //   this.chatService.sendMessage(
-  //     {
-  //       user: this.user,
-  //       room: this.room,
-  //       message: this.message
-  //     });
-  // }
 
   sendMessage() {
     this.messageService.postMessage(this.messageForm.value).subscribe(

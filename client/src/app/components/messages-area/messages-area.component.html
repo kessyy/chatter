@@ -24,7 +24,7 @@
             <li
               class="clearfix"
               *ngFor="let message of messages"
-              [ngClass]="{'is-current-user': message.user === user}">
+              [ngClass]="{'is-current-user': message.user_id === 2}">
               <div class="chat-avatar">
                 <img class="avatar" src="../../../assets/images/avatar.png" alt="user">
                 <i>{{ message.created_at }}</i>
@@ -48,8 +48,7 @@
             <input 
               class="form-control" 
               placeholder="Enter message" 
-              [(ngModel)]="message"
-              formControlName="message_body"
+              formControlName="message"
             >
             <app-button
               [buttonText]="'Send'"

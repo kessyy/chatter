@@ -26,17 +26,17 @@ export class RoomService {
    * Add user id to rooms
    */
   addUserToRoom(id: number, users: number) {
-    console.log('clicked', { users });
     return this.http.put(`rooms/add-user/${id}`, { users }, { headers: this.headers }
     ).pipe(map(response => response));
   }
-  // addUserToRoom(id: number, room_name: string) {
-  //   console.log('clicked', `rooms/${id}`, room_name);
-  //   return this.http.put(`rooms/${id}`, room_name,
-  //     { headers: this.headers })
-  //     .pipe(map(response => response));
-  // }
 
+  /**
+    * Add message id to rooms
+    */
+  addMessageToRoom(id: number, messages: number) {
+    return this.http.put(`rooms/add-message/${id}`, { messages }, { headers: this.headers }
+    ).pipe(map(response => response));
+  }
 
   /**
    * Search the messages

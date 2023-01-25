@@ -20,16 +20,6 @@ export class SideCardComponent implements OnInit {
   @Input() PopUpId: string;
   @Output() MembersButtonClicked = new EventEmitter<boolean>();
   @Output() openPersonalSpace = new EventEmitter<boolean>();
-  // user = [
-  //   {
-  //     id: 1,
-  //     firstName: 'Jane',
-  //     lastName: 'Doe',
-  //     displayName: 'the_mighty_jane',
-  //     status: 'Online',
-  //     bio: 'A bunch of words written here. A bunch of words written here. A bunch of words written here.',
-  //   }
-  // ];
   user: User[];
   currentUser: User;
   users: User[];
@@ -81,11 +71,10 @@ export class SideCardComponent implements OnInit {
     this.dataService.setSelectedUser(this.selectedUser);
     const users = user.id;
     this.roomService.addUserToRoom(12, users).pipe(first()).subscribe(response => {
-      console.log('fdnfd', response)
+      console.log('endpoint response', response)
     }, error => {
       console.log('endpoint error', error)
     });
-    console.log('selected user', users)
     // this.roomService.getRooms().subscribe(response => {
     //   this.rooms = response['rooms'];
     //   console.log('rooms', this.rooms);

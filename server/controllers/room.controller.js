@@ -4,6 +4,7 @@ const {
   createRoom,
   updateRoom,
   addUserToRoom,
+  addMessageToRoom,
   softDeleteRoom
 } = require('../models/rooms.model');
 
@@ -59,6 +60,17 @@ exports.addUserToRoom = async (req, res) => {
   }
 };
 
+exports.addMessageToRoom = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { messages }  = req.body;
+    const addedMessage = await addMessageToRoom(id,  {messages});
+    res.status(200).json({ addedMessage });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ error: error.message });
+  }
+};
 
 exports.softDeleteRoom = async (req, res) => {
   try {

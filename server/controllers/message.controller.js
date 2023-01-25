@@ -141,13 +141,23 @@ exports.getMessageById = async (req, res) => {
   }
 };
 
+// exports.addMessage = async (req, res) => {
+//   try {
+//     await Message.add(req.body);
+//     res.sendStatus(201);
+//   } catch (error) {
+//     console.log(error);
+//     res.sendStatus(500);
+//   }
+// };
+
 exports.addMessage = async (req, res) => {
   try {
-    await Message.add(req.body);
-    res.sendStatus(201);
+    const addedMessage = await Message.add(req.body);
+    res.status(201).json({ addedMessage });
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    res.status(500).json({ error: error.message });
   }
 };
 
